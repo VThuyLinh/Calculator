@@ -26,8 +26,7 @@ The project uses a clear separation of concerns between the user interface and t
 
 Don't forget to edit this readme to replace it by yours, and edit the `name =` field in `Cargo.toml` to match the name of yourproject.
 ## 🖼️ Screenshot of the app
-<img width="316" height="476" alt="image" src="https://github.com/user-attachments/assets/62db24fc-c860-43d2-9d02-ccd3f293eef3" />
-
+<img width="317" height="482" alt="image" src="https://github.com/user-attachments/assets/f7a92540-ddaa-4fe9-bb2b-5d122c9493e1" />
 
 
 
