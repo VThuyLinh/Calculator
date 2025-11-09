@@ -1,26 +1,31 @@
 # 🧮 Calculator Project (Slint + Rust)
-Giới Thiệu
-Đây là dự án ứng dụng máy tính cơ bản được phát triển bằng ngôn ngữ Rust và sử dụng framework giao diện người dùng Slint. Dự án này minh họa cách tích hợp giữa mã giao diện người dùng Slint (trong file .slint) và logic xử lý nghiệp vụ bằng Rust.
+Introduction
+This is a basic calculator application project developed using the Rust language and the Slint User Interface framework. This project illustrates the integration between the Slint UI code (in the .slint file) and the business logic implemented in Rust.
 
-## 🛠️ Hướng Dẫn Build và Chạy Ứng Dụng
-Để chạy ứng dụng này, bạn cần cài đặt Rust và sử dụng công cụ quản lý dự án Cargo.
-1. Yêu cầu Tiên quyếtRust: Cài đặt Rust theo hướng dẫn getting-started guide.Hệ điều hành: Hỗ trợ Windows, macOS, Linux (hoặc nền tảng được Slint hỗ trợ).
-2. Các Bước Thực hiện
-cargo build => Biên dịch toàn bộ project, bao gồm cả mã Rust và mã Slint UI, tạo ra file thực thi (binary) trong thư mục target/debug/.
-cargo run => Biên dịch (nếu cần) và chạy trực tiếp ứng dụng. Đây là cách nhanh nhất để khởi động ứng dụng.
+## 🛠️ How to Build and Run the Application
+To run this application, you need to install Rust and use the Cargo project management tool.
 
-## 🏗️ Tổng quan Kiến trúc
+1. Prerequisites
+   - Rust: Install Rust following the [getting-started guide].
+   - Operating System: Supports Windows, macOS, Linux (or platforms supported by Slint).
+   
+2. Execution Steps
+cargo build => Compiles the entire project, including both Rust code and Slint UI code, creating the executable binary in the target/debug/ directory.
+cargo run => Compiles (if necessary) and runs the application directly. This is the fastest way to start the application.
 
-Project sử dụng kiến trúc phân tách rõ ràng giữa giao diện người dùng và logic nghiệp vụ.
-1. Giao diện người dùng (Frontend - .slint):
-   - File giao diện chính là ui/app-window.slint (hoặc tương tự).
-   - Sử dụng cú pháp Slint Markup Language để định nghĩa layout (bố cục), các widget (nút bấm, màn hình hiển thị), và các callbacks (hàm được gọi khi có sự kiện, ví dụ: nhấn nút).
-2. Logic nghiệp vụ (Backend - .rs):
-   - Mã Rust trong src/main.rs chứa logic tính toán cốt lõi.
-   - Rust chịu trách nhiệm khởi tạo giao diện Slint, liên kết các callbacks (như handle_button_press) được định nghĩa trong .slint với các hàm Rust tương ứng, và cập nhật các thuộc tính (properties) trên UI (ví dụ: hiển thị kết quả) sau khi tính toán.
+## 🏗️ Architecture Overview
+
+The project uses a clear separation of concerns between the user interface and the business logic.
+1. User Interface (Frontend - .slint):
+   - The main interface file is ui/app-window.slint (or similar).
+   - Uses the Slint Markup Language syntax to define the layout, widgets (buttons, display screen), and callbacks (functions invoked upon events, e.g., button press).
+     
+2. Business Logic (Backend - .rs):
+   - The Rust code in src/main.rs contains the core calculation logic.
+   - Rust is responsible for initializing the Slint interface, binding the callbacks (such as handle_button_press) defined in the .slint file to the corresponding Rust functions, and updating the properties on the UI (e.g., displaying the result) after calculation.
 
 Don't forget to edit this readme to replace it by yours, and edit the `name =` field in `Cargo.toml` to match the name of yourproject.
-## 🖼️ Ảnh chụp Ứng dụng
+## 🖼️ Screenshot of the app
 <img width="316" height="476" alt="image" src="https://github.com/user-attachments/assets/62db24fc-c860-43d2-9d02-ccd3f293eef3" />
 
 
