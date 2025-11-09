@@ -1,38 +1,28 @@
-# Slint Rust Template
+# 🧮 Calculator Project (Slint + Rust)
+Giới Thiệu
+Đây là dự án ứng dụng máy tính cơ bản được phát triển bằng ngôn ngữ Rust và sử dụng framework giao diện người dùng Slint. Dự án này minh họa cách tích hợp giữa mã giao diện người dùng Slint (trong file .slint) và logic xử lý nghiệp vụ bằng Rust.
 
-A template for a Rust application that's using [Slint](https://slint.rs/) for the user interface.
+## 🛠️ Hướng Dẫn Build và Chạy Ứng Dụng
+Để chạy ứng dụng này, bạn cần cài đặt Rust và sử dụng công cụ quản lý dự án Cargo.
+1. Yêu cầu Tiên quyếtRust: Cài đặt Rust theo hướng dẫn getting-started guide.Hệ điều hành: Hỗ trợ Windows, macOS, Linux (hoặc nền tảng được Slint hỗ trợ).
+2. Các Bước Thực hiện
+cargo build => Biên dịch toàn bộ project, bao gồm cả mã Rust và mã Slint UI, tạo ra file thực thi (binary) trong thư mục target/debug/.
+cargo run => Biên dịch (nếu cần) và chạy trực tiếp ứng dụng. Đây là cách nhanh nhất để khởi động ứng dụng.
 
-## About
+## 🏗️ Tổng quan Kiến trúc
 
-This template helps you get started developing a Rust application with Slint as toolkit
-for the user interface. It demonstrates the integration between the `.slint` UI markup and
-Rust code, how to react to callbacks, get and set properties, and use basic widgets.
+Project sử dụng kiến trúc phân tách rõ ràng giữa giao diện người dùng và logic nghiệp vụ.
+1. Giao diện người dùng (Frontend - .slint):
+   - File giao diện chính là ui/app-window.slint (hoặc tương tự).
+   - Sử dụng cú pháp Slint Markup Language để định nghĩa layout (bố cục), các widget (nút bấm, màn hình hiển thị), và các callbacks (hàm được gọi khi có sự kiện, ví dụ: nhấn nút).
+2. Logic nghiệp vụ (Backend - .rs):
+   - Mã Rust trong src/main.rs chứa logic tính toán cốt lõi.
+   - Rust chịu trách nhiệm khởi tạo giao diện Slint, liên kết các callbacks (như handle_button_press) được định nghĩa trong .slint với các hàm Rust tương ứng, và cập nhật các thuộc tính (properties) trên UI (ví dụ: hiển thị kết quả) sau khi tính toán.
 
-## Usage
+Don't forget to edit this readme to replace it by yours, and edit the `name =` field in `Cargo.toml` to match the name of yourproject.
+## 🖼️ Ảnh chụp Ứng dụng
+<img width="316" height="476" alt="image" src="https://github.com/user-attachments/assets/62db24fc-c860-43d2-9d02-ccd3f293eef3" />
 
-1. Install Rust by following its [getting-started guide](https://www.rust-lang.org/learn/get-started).
-   Once this is done, you should have the `rustc` compiler and the `cargo` build system installed in your `PATH`.
-2. Download and extract the [ZIP archive of this repository](https://github.com/slint-ui/slint-rust-template/archive/refs/heads/main.zip).
-3. Rename the extracted directory and change into it:
-    ```
-    mv slint-rust-template-main my-project
-    cd my-project    
-    ```
-4. Build with `cargo`:
-    ```
-    cargo build
-    ```
-5. Run the application binary:
-    ```
-    cargo run
-    ```
 
-We recommend using an IDE for development, along with our [LSP-based IDE integration for `.slint` files](https://github.com/slint-ui/slint/blob/master/tools/lsp/README.md). You can also load this project directly in [Visual Studio Code](https://code.visualstudio.com) and install our [Slint extension](https://marketplace.visualstudio.com/items?itemName=Slint.slint).
 
-## Next Steps
 
-We hope that this template helps you get started, and that you enjoy exploring making user interfaces with Slint. To learn more
-about the Slint APIs and the `.slint` markup language, check out our [online documentation](https://slint.dev/docs).
-
-Don't forget to edit this readme to replace it by yours, and edit the `name =` field in `Cargo.toml` to match the name of your
-project.
