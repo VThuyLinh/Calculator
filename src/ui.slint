@@ -1,14 +1,18 @@
-
-
 import { Button } from "std-widgets.slint";
 export component Calculator inherits Window {
     in property <string> default:"0";
     callback handle_button_clicked(string);
     
-
+    in-out property <bool> is-dark-mode: false;
+    callback request_toggle_theme;
+    
+    // Áp dụng màu nền dựa trên is-dark-mode
+    background: root.is-dark-mode ? #36454F : #b7fbbb;
+    
     width: 250px;
     height: 350px; 
-    background: #b7fbbb; 
+ 
+    
 
     VerticalLayout {
         spacing: 5px;
@@ -17,13 +21,13 @@ export component Calculator inherits Window {
         // --- KHU VỰC HIỂN THỊ ---
         Rectangle {
             height: 70px; 
-            background: #01350f; 
+            background: root.is-dark-mode ? #1E2B38 : #01350f; // Màu nền hiển thị
 
             TextInput {
                 text: root.default; 
                 read-only: true;
                 font-size: 36px;
-                color: #ffffff;
+                color: root.is-dark-mode ? #FFFFFF : #ffffff; // Màu chữ dựa trên is-dark-mode
                 horizontal-alignment: right;
                 width: 100%; 
                 height: 100%;
@@ -33,6 +37,7 @@ export component Calculator inherits Window {
 
         
         
+        // Hàng Memory và Theme Toggle
         HorizontalLayout {
             spacing: 5px;
             //MC
@@ -45,13 +50,16 @@ export component Calculator inherits Window {
             Button {text: "M-"; clicked => { root.handle_button_clicked("M_SUBTRACT"); }}
         }
 
-
         // Hàng 1:
         HorizontalLayout {
             spacing: 5px;
             Button { text:"C";  clicked => {root.handle_button_clicked("C")}; }
             Button { text:"±";  clicked => {root.handle_button_clicked("±")}; }
-            Button { text: "←";  clicked => {root.handle_button_clicked("←"); } }
+            // Nút chuyển đổi Theme mới
+            Button { 
+                text: root.is-dark-mode ? "🌙" : "☀️";
+                clicked => { root.request_toggle_theme(); }
+            }
             Button { text: "/";  clicked => { root.handle_button_clicked("/"); } }
         }
 
@@ -85,11 +93,15 @@ export component Calculator inherits Window {
         // Hàng cuối
         HorizontalLayout {
             spacing: 5px;
-            Button { text:"0"; clicked => {root.handle_button_clicked("0")}; }
-            Button { text:"00"; clicked => {root.handle_button_clicked("0")}; } 
+            // Gộp 0 và 00 thành một nút 0 lớn hơn
+            Button { 
+                text:"0"; 
+                clicked => {root.handle_button_clicked("0")}; 
+                // Tăng độ rộng chiếm dụng
+                preferred-width: 2 * (parent.width / 4) + parent.spacing / 2;
+            }
             Button { text:"."; clicked => {root.handle_button_clicked(".")}; }
             Button { text: "=";  clicked => {root.handle_button_clicked("="); }}
         }
     }
 }
-
