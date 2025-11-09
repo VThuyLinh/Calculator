@@ -1,0 +1,9 @@
+# Thư mục build/biên dịch của Rust (KHÔNG BAO GIỜ được đẩy lên Git)
+/target/
+
+# File lock chứa thông tin dependencies
+Cargo.lock
+
+# Các thư mục cấu hình IDE không cần thiết
+.vscode/
+.idea/

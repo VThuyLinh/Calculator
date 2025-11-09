@@ -1,0 +1,95 @@
+
+
+import { Button } from "std-widgets.slint";
+export component Calculator inherits Window {
+    in property <string> default:"0";
+    callback handle_button_clicked(string);
+    
+
+    width: 250px;
+    height: 350px; 
+    background: #b7fbbb; 
+
+    VerticalLayout {
+        spacing: 5px;
+        padding: 10px;
+
+        // --- KHU VỰC HIỂN THỊ ---
+        Rectangle {
+            height: 70px; 
+            background: #01350f; 
+
+            TextInput {
+                text: root.default; 
+                read-only: true;
+                font-size: 36px;
+                color: #ffffff;
+                horizontal-alignment: right;
+                width: 100%; 
+                height: 100%;
+            }
+        }
+
+
+        
+        
+        HorizontalLayout {
+            spacing: 5px;
+            //MC
+            Button {text: "MC";clicked => { root.handle_button_clicked("M_CLEAR"); } }
+            //MR
+            Button {text: "MR"; clicked => { root.handle_button_clicked("M_RECALL"); }}
+            //M+
+            Button {text: "M+"; clicked => { root.handle_button_clicked("M_ADD"); }}
+            //M-
+            Button {text: "M-"; clicked => { root.handle_button_clicked("M_SUBTRACT"); }}
+        }
+
+
+        // Hàng 1:
+        HorizontalLayout {
+            spacing: 5px;
+            Button { text:"C";  clicked => {root.handle_button_clicked("C")}; }
+            Button { text:"±";  clicked => {root.handle_button_clicked("±")}; }
+            Button { text: "←";  clicked => {root.handle_button_clicked("←"); } }
+            Button { text: "/";  clicked => { root.handle_button_clicked("/"); } }
+        }
+
+        // Hàng 2: 
+        HorizontalLayout {
+            spacing: 5px;
+            Button { text:"7"; clicked => {root.handle_button_clicked("7")}; }
+            Button { text:"8"; clicked => {root.handle_button_clicked("8")}; }
+            Button { text: "9"; clicked => {root.handle_button_clicked("9"); } }
+            Button { text: "x";  clicked => { root.handle_button_clicked("x"); } }
+        }
+
+        // Hàng 3:
+        HorizontalLayout {
+            spacing: 5px;
+            Button { text:"4"; clicked => {root.handle_button_clicked("4")}; }
+            Button { text:"5"; clicked => {root.handle_button_clicked("5")}; }
+            Button { text: "6"; clicked => {root.handle_button_clicked("6"); } }
+            Button { text: "-";  clicked => { root.handle_button_clicked("-"); } }
+        }
+
+        // Hàng 4:
+        HorizontalLayout {
+            spacing: 5px;
+            Button { text:"1"; clicked => {root.handle_button_clicked("1")}; }
+            Button { text:"2"; clicked => {root.handle_button_clicked("2")}; }
+            Button { text: "3"; clicked => {root.handle_button_clicked("3"); } }
+            Button { text: "+"; clicked => { root.handle_button_clicked("+"); } }
+        }
+        
+        // Hàng cuối
+        HorizontalLayout {
+            spacing: 5px;
+            Button { text:"0"; clicked => {root.handle_button_clicked("0")}; }
+            Button { text:"00"; clicked => {root.handle_button_clicked("0")}; } 
+            Button { text:"."; clicked => {root.handle_button_clicked(".")}; }
+            Button { text: "=";  clicked => {root.handle_button_clicked("="); }}
+        }
+    }
+}
+
